@@ -10,7 +10,8 @@ export const main = Util.handler(async (event) => {
     TableName: Resource.Notes.name,
     KeyConditionExpression: "user_id = :user_id",
     ExpressionAttributeValues: {
-      ":user_id": "123",
+      ":user_id":
+        event.requestContext.authorizer?.iam.cognitoIdentity.identityId,
     },
   };
 

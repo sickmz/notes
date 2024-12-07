@@ -12,7 +12,7 @@ export const main = Util.handler(async (event) => {
   const params = {
     TableName: Resource.Notes.name,
     Key: {
-      user_id: "123",
+      user_id: event.requestContext.authorizer?.iam.cognitoIdentity.identityId,
       note_id: event?.pathParameters?.note_id,
     },
     UpdateExpression: "SET content = :content, attachment = :attachment",
