@@ -8,3 +8,6 @@ export const table = new sst.aws.Dynamo("Notes", {
   },
   primaryIndex: { hashKey: "user_id", rangeKey: "note_id" },
 });
+
+// Create a secret for Stripe
+export const secret = new sst.Secret("StripeSecretKey");
