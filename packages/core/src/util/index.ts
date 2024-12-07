@@ -22,6 +22,10 @@ export namespace Util {
       return {
         body,
         statusCode,
+        Headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+        },
       };
     };
   }
