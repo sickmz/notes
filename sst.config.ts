@@ -4,12 +4,18 @@ export default $config({
   app(input) {
     return {
       name: "notes",
-      removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
+      region: "eu-central-1",
+      removal: input?.stage === "production" ? "retain" : "remove",
+      providers: {
+        aws: {
+          profile: input.stage === "production" ? "prod" : "dev",
+        },
+      },
     };
   },
   async run() {
     await import("./infra/storage");
     await import("./infra/api");
-},
+  },
 });
